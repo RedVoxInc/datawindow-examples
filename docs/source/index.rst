@@ -5,7 +5,7 @@
 
 
 Redvox SDK DataWindow Examples
-=====================
+================================
 
 Welcome to Redvox SDK DataWindow Examples!
 
