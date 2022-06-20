@@ -12,7 +12,7 @@ Please do not change/move.
 
 ### Editing the docs
 
-The meat of the documentation is in redvox-examples/docs/source. The `.md` files are the base of the documentation.
+The meat of the documentation is in datawindow-examples/docs/source. The `.md` files are the base of the documentation.
 You also need the conf.py file to be in the source directory.
 
 If you add new `.md` files, make sure that `index.rst` inside the `source` folder points to the new file using
@@ -36,5 +36,5 @@ Once you are done with your changes, open a terminal with a python environment, 
 (venv3910) meritxell@ISLA-11 docs % make html 
 ```
 
-To view the docs in a browser, go to redvox-examples/docs/build/html and open `index.html` in a browser.
+To view the docs in a browser, go to datawindow-examples/docs/build/html and open `index.html` in a browser.
 
