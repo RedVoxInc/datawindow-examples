@@ -23,22 +23,22 @@ Contents
 
 - :doc:`prereqs`
 - :doc:`getting_data`
+- :doc:`what_is_data_window`
 
 **DataWindow Basics**
 
-- :doc:`what_is_data_window`
 - :doc:`00_create_data_window`
 - :doc:`01_data_window_metadata`
-- :doc:`00_station`
-- :doc:`00_station_data`
-- :doc:`00_sensor_data`
+- :doc:`02_station`
+- :doc:`03_station_data`
+- :doc:`04_sensor_data`
 
 **DataWindow Advanced**
 
-- :doc:`00_data_window_parameters`
-- :doc:`00_save_load_data_window`
-- :doc:`00_time_synchronization`
-- :doc:`00_event_data`
+- :doc:`00a_data_window_parameters`
+- :doc:`00b_save_load_data_window`
+- :doc:`03a_time_synchronization`
+- :doc:`03b_event_data`
 
 Basic definitions
 ------------------
@@ -90,19 +90,19 @@ The following terms are common terminology used throughout this documentation.
    what_is_data_window
    00_create_data_window
    01_data_window_metadata
-   00_station
-   00_station_data
-   00_sensor_data
+   02_station
+   03_station_data
+   04_sensor_data
 
 .. toctree::
    :maxdepth: 2
    :hidden:
    :caption: DataWindow Advanced...
 
-   00_data_window_parameters
-   00_save_load_data_window
-   00_time_synchronization
-   00_event_data
+   00a_data_window_parameters
+   00b_save_load_data_window
+   03a_time_synchronization
+   03b_event_data
 
 .. toctree::
    :maxdepth: 2

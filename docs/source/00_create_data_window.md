@@ -12,7 +12,7 @@ In this example we will demonstrate how to create a DataWindow using raw data fi
 > Raw data files come in specially formatted files with one of the following extensions: `.rdvxz` or `.rdvxm`.
 
 If you have downloaded a pre-constructed DataWindow, then please visit the 
-[Load DataWindow](00_save_load_data_window.md#loading-a-pre-constructed-datawindow) section.
+[Load DataWindow](00b_save_load_data_window.md#loading-a-pre-constructed-datawindow) section.
 
 ## Loading Raw Data
 
@@ -50,7 +50,7 @@ dw = DataWindow("my_dw", config=dw_config)
 ```
 
 You may want more control over which data is loaded into DataWindow.  Please view the 
-[DataWindow Parameters](00_data_window_parameters.md) example for more details.
+[DataWindow Parameters](00a_data_window_parameters.md) example for more details.
 
 Now that you have a DataWindow, we will demonstrate how to [access the metadata](01_data_window_metadata.md) in the 
 next section.

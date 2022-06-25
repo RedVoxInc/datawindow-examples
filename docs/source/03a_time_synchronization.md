@@ -72,4 +72,4 @@ of the DataWindow.
 We update our raw data timestamps by adding the offset to each.  This allows us to account for offsets that are less 
 than 0 (meaning the device time is ahead of the server's).
 
-Return to the section on how to [access the data](00_station_data.md).
+Return to the section on how to [access the data](03_station_data.md).

@@ -164,4 +164,4 @@ used a function that didn't retrieve string-typed data.  Take caution when retri
 data you are retrieving matters greatly.  If you are stuck, use the `get_schema()` function or invoke each of the 
 `get_X_schema()` functions, where X is one of string, numeric, boolean, or byte.
 
-Return to the section on how to [access the data](00_station_data.md).
+Return to the section on how to [access the data](03_station_data.md).

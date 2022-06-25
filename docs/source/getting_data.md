@@ -62,4 +62,6 @@ for more information about using it to get data.
 Use your preferred method of saving the files from a recording device or other computer onto your computer.  The exact 
 method will vary based on the combination of device and OS.  We assume you are knowledgeable about this process.
 
-Now that you have your data, we will [briefly explain DataWindow](what_is_data_window.md).
+Now that we have some data, we can look at [how to create a DataWindow](00_create_data_window.md).
+
+If you want to learn more about DataWindow, [a brief overview](what_is_data_window.md) is provided.

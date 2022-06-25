@@ -95,5 +95,5 @@ print(stn.packet_metadata())
 print(stn.is_timestamps_updated())
 ```
 
-Now that you have looked at Station metadata, we will demonstrate how to [access the data](00_station_data.md) in the
+Now that you have looked at Station metadata, we will demonstrate how to [access the data](03_station_data.md) in the
 next section.

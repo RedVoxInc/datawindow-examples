@@ -5,7 +5,7 @@ In this example we will access data stored by the Station.
 ## Time Synchronization Data
 
 Time synchronization data is used by the Station to correct its timestamps.  Read more about this process 
-[here](00_time_synchronization.md).
+[here](03a_time_synchronization.md).
 
 ## Getting Time Synchronization Data from Station
 
@@ -24,7 +24,7 @@ stn = dw.first_station()
 ts = stn.timesync_data()
 ```
 
-If you want to learn more about what you can do with the time synchronization data, visit [this page](00_time_synchronization.md).
+If you want to learn more about what you can do with the time synchronization data, visit [this page](03a_time_synchronization.md).
 
 ## Event Data
 
@@ -48,6 +48,6 @@ stn = dw.first_station()
 events = stn.event_data()
 ```
 
-If you want to learn more about what you can do with the Event data, visit [this page](00_event_data.md).
+If you want to learn more about what you can do with the Event data, visit [this page](03b_event_data.md).
 
-We will demonstrate how to [access the sensor data](00_sensor_data.md) in the next section.
+We will demonstrate how to [access the sensor data](04_sensor_data.md) in the next section.

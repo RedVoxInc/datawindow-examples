@@ -4,7 +4,7 @@ In this example we will use the SDK to view basic information in a DataWindow.
 
 If you have not created a DataWindow, visit the [creating a DataWindow](00_create_data_window.md) page.
 If you have an existing DataWindow, visit the 
-[saving and loading a DataWindow](00_save_load_data_window.md#loading-a-pre-constructed-datawindow) page.
+[saving and loading a DataWindow](00b_save_load_data_window.md#loading-a-pre-constructed-datawindow) page.
 You must have performed this step before working with the examples on this page.
 
 ## Accessing DataWindow Metadata
@@ -50,5 +50,5 @@ print(dw.pretty())
 print(dw.as_dict())
 ```
 
-Now that you have accessed the DataWindow metadata, we will demonstrate how to [access Stations](00_station.md) 
+Now that you have accessed the DataWindow metadata, we will demonstrate how to [access Stations](02_station.md) 
 in the next section.
