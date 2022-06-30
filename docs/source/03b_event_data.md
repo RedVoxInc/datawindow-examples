@@ -1,7 +1,8 @@
 # Event Data
 
-Event data is all the detections within the duration window.  These detections are determined by a machine learning 
-model.
+Event data is all the sounds detected within the duration window.  A machine learning model is the source of the data.
+The exact methods of detecting sounds are specific to each model, so the SDK uses a few tricks to store the data in a 
+flexible way.
 
 ## Getting Event Data
 
@@ -22,8 +23,8 @@ stn = dw.first_station()
 events = stn.event_data()
 ```
 
-Event data is organized into streams, with each stream identified by a unique name; usually the name of the machine 
-learning model that classified the events.
+Event data is organized into streams, with each stream identified by a unique name; usually a descriptor of the machine 
+learning model that classified the events.  Streams also store metadata shared by all the events within the stream.
 
 This example shows how to use the unique name to access the data of the stream.
 
@@ -53,6 +54,18 @@ print(stream.name)
 
 # Print the number of events in the stream
 print(stream.num_events())
+
+# Print the audio input sample rate
+print(stream.input_sample_rate)
+
+# Print the number of samples per window (the number of points the model needs to make a decision)
+print(stream.samples_per_window)
+
+# Print the number of samples per hop (how often the model starts a new window for detection)
+print(stream.samples_per_hop)
+
+# Print the version of the model used to detect the sounds
+print(stream.model_version)
 
 # Change the value below to the desired index
 event_index = 0

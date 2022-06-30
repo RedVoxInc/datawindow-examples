@@ -70,7 +70,7 @@ mag = stn.magnetometer_sensor()
 hlth = stn.health_sensor()
 
 # get the location sensor
-loc = stn.location_sensor()()
+loc = stn.location_sensor()
 ```
 
 ## Sensor Metadata
