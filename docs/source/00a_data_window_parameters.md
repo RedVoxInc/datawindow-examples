@@ -79,7 +79,8 @@ be set.  We also recommend you take notice of the format of your data's director
 parameter.
 
 1. `input_dir`: The directory that contains all the data.  REQUIRED
-2. `structured_layout`: A boolean that denotes if the `input_dir` contains specially named and organized directories of data.
+2. `structured_layout`: A boolean that denotes if the `input_dir` contains specially named and organized directories of 
+   data.  Read more about the structured layout [here](https://github.com/RedVoxInc/redvox-api-1000/blob/master/docs/standards/filenames_and_directory_structures.md#standard-directory-structure).
 3. `start_datetime`: A datetime of the inclusive starting datetime of the window.  If not included, uses the first 
    timestamp of the data.
 4. `end_datetime`: A datetime of the non-inclusive ending datetime of the window.  If not included, uses the last 
@@ -224,7 +225,7 @@ config = DataWindowConfig(input_dir=input_dir,
                           end_datetime=end_timestamp_s,
                           station_ids=station_ids)
 
-datawindow = DataWindow(event_name= "example_dw",
+datawindow = DataWindow(event_name="example_dw",
                         config=config)
 ```
 

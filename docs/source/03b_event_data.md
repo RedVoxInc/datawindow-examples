@@ -140,7 +140,7 @@ print(event.get_byte_item("data_key"))
 The Event class in the SDK is designed to be adaptable and prescient to future models.  The data for an event is split 
 via the type of the data.  The data values are assigned keys based on the models' naming scheme and the ranking of the 
 classifications.  We support multiple classifications for a single event, as the models' predictions aren't always 100% 
-confident.  As the model's confidence in the classification is above a certain threshold (which can be adjusted in the 
+confident.  If the model's confidence in the classification is above a certain threshold (which can be adjusted in the 
 app), we will store the information in the Event class.
 
 As an example, a YAMNet model may be most confident that a certain sound is from an engine, but may also be fairly 

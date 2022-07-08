@@ -31,7 +31,7 @@ for d in data:
 types = stn.get_station_sensor_types()
 ```
 
-You can use the available types of the Station to get corresponding Sensors.  If the return value of a function is 
+Use the types listed by the function to get the corresponding Sensors.  If the return value of a function is 
 `None`, the Sensor doesn't exist for that Station.
 
 Here is an example of getting commonly used Sensors.

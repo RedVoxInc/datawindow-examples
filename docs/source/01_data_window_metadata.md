@@ -9,7 +9,7 @@ You must have performed this step before working with the examples on this page.
 
 ## Accessing DataWindow Metadata
 
-Metadata provides a high-level description of DataWindow.  It is unrelated to the data recorded by sensors.
+Metadata provides a high-level description of DataWindow.  It is independent of the data recorded by sensors.
 
 This example shows which functions are used to view the metadata of a DataWindow.
 
