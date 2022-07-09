@@ -19,3 +19,4 @@ Finished with the examples? Great! Here are some suggestions on what to do next:
   [Available online](https://doi.org/10.3390/signals3020014)
 
     - Github repository showcasing [Skyfall example](https://github.com/RedVoxInc/Skyfall) and corresponding [Skyfall documentation](https://redvoxinc.github.io/Skyfall/).
+
