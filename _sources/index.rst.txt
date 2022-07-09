@@ -23,10 +23,10 @@ Contents
 
 - :doc:`prereqs`
 - :doc:`getting_data`
-- :doc:`what_is_data_window`
 
 **DataWindow Basics**
 
+- :doc:`what_is_data_window`
 - :doc:`00_create_data_window`
 - :doc:`01_data_window_metadata`
 - :doc:`02_station`
