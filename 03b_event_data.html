@@ -1,0 +1,464 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="What to do next?" href="what_to_do_next.html" /><link rel="prev" title="Time Synchronization" href="03a_time_synchronization.html" />
+
+    <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+        <title>Event Data - RedVox DataWindow Examples</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">RedVox DataWindow Examples</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/redvox_logo.png" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">RedVox DataWindow Examples</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Before Starting...</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="prereqs.html">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_data.html">Getting Started</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DataWindow Basics...</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_is_data_window.html">What is DataWindow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00_create_data_window.html">Create a DataWindow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_data_window_metadata.html">Viewing Data Window Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_station.html">Accessing Stations in a DataWindow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_station_data.html">Accessing Station Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_sensor_data.html">Accessing Sensors in a Station</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">DataWindow Advanced...</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="00a_data_window_parameters.html">DataWindow Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="00b_save_load_data_window.html">Save and Load DataWindow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03a_time_synchronization.html">Time Synchronization</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Event Data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For more information:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="what_to_do_next.html">What to do next?</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <div class="section" id="event-data">
+<h1>Event Data<a class="headerlink" href="#event-data" title="Permalink to this headline">#</a></h1>
+<p>Event data is all the sounds detected within the duration window.  A machine learning model is the source of the data.
+The exact methods of detecting sounds are specific to each model, so the SDK uses a few tricks to store the data in a
+flexible way.</p>
+<div class="section" id="getting-event-data">
+<h2>Getting Event Data<a class="headerlink" href="#getting-event-data" title="Permalink to this headline">#</a></h2>
+<p>Event data is accessed via the Station object.</p>
+<p>This example shows how to access the Event data in the Station.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">redvox.common.data_window</span> <span class="kn">import</span> <span class="n">DataWindow</span>
+
+<span class="c1"># Replace the following line with an appropriate method of loading data</span>
+<span class="n">dw</span> <span class="o">=</span> <span class="n">DataWindow</span><span class="p">()</span>
+
+<span class="c1"># get the first station</span>
+<span class="n">stn</span> <span class="o">=</span> <span class="n">dw</span><span class="o">.</span><span class="n">first_station</span><span class="p">()</span>
+
+<span class="c1"># get the events</span>
+<span class="n">events</span> <span class="o">=</span> <span class="n">stn</span><span class="o">.</span><span class="n">event_data</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Event data is organized into streams, with each stream identified by a unique name; usually a descriptor of the machine
+learning model that classified the events.  Streams also store metadata shared by all the events within the stream.</p>
+<p>This example shows how to use the unique name to access the data of the stream.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">redvox.common.event_stream</span> <span class="kn">import</span> <span class="n">EventStreams</span>
+
+<span class="c1"># Replace the following line with an appropriate method of loading event data from a Station</span>
+<span class="n">events</span><span class="p">:</span> <span class="n">EventStreams</span>
+
+<span class="c1"># Print the names of the streams</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">events</span><span class="o">.</span><span class="n">get_stream_names</span><span class="p">())</span>
+
+<span class="c1"># Get a stream with a specific name</span>
+<span class="n">stream</span> <span class="o">=</span> <span class="n">events</span><span class="o">.</span><span class="n">get_stream</span><span class="p">(</span><span class="s2">"stream_name"</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This example shows various functions you can use to access information about a stream.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">redvox.common.event_stream</span> <span class="kn">import</span> <span class="n">EventStream</span>
+
+<span class="c1"># Replace the following line with an appropriate method of loading a stream</span>
+<span class="n">stream</span><span class="p">:</span> <span class="n">EventStream</span>
+
+<span class="c1"># Print the name of the stream</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="c1"># Print the number of events in the stream</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">num_events</span><span class="p">())</span>
+
+<span class="c1"># Print the audio input sample rate</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">input_sample_rate</span><span class="p">)</span>
+
+<span class="c1"># Print the number of samples per window (the number of points the model needs to make a decision)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">samples_per_window</span><span class="p">)</span>
+
+<span class="c1"># Print the number of samples per hop (how often the model starts a new window for detection)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">samples_per_hop</span><span class="p">)</span>
+
+<span class="c1"># Print the version of the model used to detect the sounds</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">model_version</span><span class="p">)</span>
+
+<span class="c1"># Change the value below to the desired index</span>
+<span class="n">event_index</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># Print the event at a specific index</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stream</span><span class="o">.</span><span class="n">get_event</span><span class="p">(</span><span class="n">event_index</span><span class="p">))</span>
+
+<span class="c1"># Iterate over all events</span>
+<span class="k">for</span> <span class="n">ev</span> <span class="ow">in</span> <span class="n">stream</span><span class="o">.</span><span class="n">events</span><span class="p">:</span>
+    <span class="c1"># Do something for each event</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ev</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This example shows various functions you can use to access Event information.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">redvox.common.event_stream</span> <span class="kn">import</span> <span class="n">Event</span>
+
+<span class="c1"># Replace the following line with an appropriate method of loading a single Event</span>
+<span class="n">event</span><span class="p">:</span> <span class="n">Event</span>
+
+<span class="c1"># Print the name of the event</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="c1"># Print the timestamp of the event</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">get_timestamp</span><span class="p">())</span>
+
+<span class="c1"># Print the data types and keys</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">get_schema</span><span class="p">())</span>
+
+<span class="c1"># Print the data keys</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">get_data_keys</span><span class="p">())</span>
+
+<span class="c1"># Print the data keys of string data</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">get_string_schema</span><span class="p">())</span>
+
+<span class="c1"># Print the string data as a dictionary</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">get_string_values</span><span class="p">())</span>
+
+<span class="c1"># Print the string data for a specific key</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">get_string_item</span><span class="p">(</span><span class="s2">"data_key"</span><span class="p">))</span>
+
+<span class="c1"># Print the data keys of numeric data</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">get_numeric_schema</span><span class="p">())</span>
+
+<span class="c1"># Print the numeric data as a dictionary</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">get_numeric_values</span><span class="p">())</span>
+
+<span class="c1"># Print the numeric data for a specific key</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">get_numeric_item</span><span class="p">(</span><span class="s2">"data_key"</span><span class="p">))</span>
+
+<span class="c1"># Print the data keys of boolean data</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">get_boolean_schema</span><span class="p">())</span>
+
+<span class="c1"># Print the boolean data as a dictionary</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">get_boolean_values</span><span class="p">())</span>
+
+<span class="c1"># Print the boolean data for a specific key</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">get_boolean_item</span><span class="p">(</span><span class="s2">"data_key"</span><span class="p">))</span>
+
+<span class="c1"># Print the data keys of byte data</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">get_byte_schema</span><span class="p">())</span>
+
+<span class="c1"># Print the byte data as a dictionary</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">get_byte_values</span><span class="p">())</span>
+
+<span class="c1"># Print the byte data for a specific key</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">get_byte_item</span><span class="p">(</span><span class="s2">"data_key"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="event-structure">
+<h2>Event Structure<a class="headerlink" href="#event-structure" title="Permalink to this headline">#</a></h2>
+<p>The Event class in the SDK is designed to be adaptable and prescient to future models.  The data for an event is split
+via the type of the data.  The data values are assigned keys based on the models’ naming scheme and the ranking of the
+classifications.  We support multiple classifications for a single event, as the models’ predictions aren’t always 100%
+confident.  If the model’s confidence in the classification is above a certain threshold (which can be adjusted in the
+app), we will store the information in the Event class.</p>
+<p>As an example, a YAMNet model may be most confident that a certain sound is from an engine, but may also be fairly
+confident the sound is a vehicle, or even an animal roaring.  The data would look something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+ <span class="n">timestamp</span><span class="p">:</span> <span class="mi">123456</span><span class="p">,</span>
+ <span class="n">data</span><span class="p">:</span>
+    <span class="p">{</span><span class="n">STRING</span><span class="p">:</span> <span class="p">{</span><span class="n">class_0</span><span class="p">:</span> <span class="n">engine</span><span class="p">,</span> <span class="n">class_1</span><span class="p">:</span> <span class="n">vehicle</span><span class="p">,</span> <span class="n">class_2</span><span class="p">:</span> <span class="n">animal_roar</span><span class="p">}</span>
+     <span class="n">NUMERIC</span><span class="p">:</span> <span class="p">{</span><span class="n">duration</span><span class="p">:</span> <span class="mf">975000.0</span><span class="p">,</span> <span class="n">score_0</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">score_1</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">score_2</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the above example, the score_X values correspond to the class_X values.  The higher the score, the more confident the
+model is about the sound being in the class.  This example shows how you would access the data:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">redvox.common.event_stream</span> <span class="kn">import</span> <span class="n">Event</span>
+
+<span class="c1"># Replace the following line with an appropriate method of loading a single Event</span>
+<span class="n">event</span><span class="p">:</span> <span class="n">Event</span>
+
+<span class="c1"># Get the columns that start with "class"; i.e. "class_0", "class_1", "class_2"</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get_string_column</span><span class="p">(</span><span class="s2">"class"</span><span class="p">)</span>
+
+<span class="c1"># Get the columns that end with "0"; i.e. "class_0" and "score_0"</span>
+<span class="n">best_guess</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">get_classification</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note how the classes were retrieved using the <code class="docutils literal notranslate"><span class="pre">get_string_column()</span></code> function.  We would not get any results if we had
+used a function that didn’t retrieve string-typed data.  Take caution when retrieving Event data, as the type of the
+data you are retrieving matters greatly.  If you are stuck, use the <code class="docutils literal notranslate"><span class="pre">get_schema()</span></code> function or invoke each of the
+<code class="docutils literal notranslate"><span class="pre">get_X_schema()</span></code> functions, where X is one of string, numeric, boolean, or byte.</p>
+<p>Return to the section on how to <a class="reference internal" href="03_station_data.html"><span class="doc std std-doc">access the data</span></a>.</p>
+</div>
+</div>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="what_to_do_next.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">What to do next?</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="03a_time_synchronization.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Time Synchronization</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, RedVox, Inc.
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/RedVoxInc/datawindow-examples" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Event Data</a><ul>
+<li><a class="reference internal" href="#getting-event-data">Getting Event Data</a></li>
+<li><a class="reference internal" href="#event-structure">Event Structure</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    </body>
+</html>
