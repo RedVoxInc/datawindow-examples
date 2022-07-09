@@ -27,11 +27,11 @@ the docs in Github pages
 
 ### Viewing the docs locally
 
-Once you are done with your changes, open a terminal with a python environment, cd to redvox-examples/docs, and type `make clean` and `make html`.
+Once you are done with your changes, open a terminal with a python environment, cd to datawindow-examples/docs, and type `make clean` and `make html`.
 `make clean` will eliminate everything in the `build` folder and `make html` will (re)build the documentation.
 
 ```shell
-(venv3910) meritxell@ISLA-11 redvox-examples % cd docs
+(venv3910) meritxell@ISLA-11 datawindow-examples % cd docs
 (venv3910) meritxell@ISLA-11 docs % make clean 
 (venv3910) meritxell@ISLA-11 docs % make html 
 ```
