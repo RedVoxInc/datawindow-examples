@@ -1,6 +1,6 @@
 # Event Data
 
-<img src="../../img/dw_fc_vnt.png" width="300px" />
+![](../img/dw_fc_vnt.png)
 
 Event data is all the sounds detected within the duration window.  A machine learning model is the source of the data.
 The exact methods of detecting sounds are specific to each model, so the SDK uses a few tricks to store the data in a 

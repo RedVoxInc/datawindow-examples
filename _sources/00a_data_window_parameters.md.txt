@@ -1,6 +1,6 @@
 # DataWindow Parameters
 
-<img src="../../img/dw_fc_dw.png" width="300px" />
+![](../img/dw_fc_dw.png)
 
 In this example, we will go over all the parameters you can pass into DataWindow to customize the result.
 

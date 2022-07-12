@@ -1,6 +1,6 @@
 # Channels and Units of Sensors
 
-<img src="../../img/dw_fc_snr.png" width="300px" />
+![](../img/dw_fc_snr.png)
 
 The table below shows which channels can be accessed by each sensor using the `get_channel_data()` function
 

@@ -1,6 +1,6 @@
 # Viewing Data Window Metadata
 
-<img src="../../img/dw_fc_dw.png" width="300px" />
+![](../img/dw_fc_dw.png)
 
 In this example we will use the SDK to view basic information in a DataWindow.
 
