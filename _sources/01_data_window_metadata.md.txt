@@ -1,5 +1,7 @@
 # Viewing Data Window Metadata
 
+<img src="../../img/dw_fc_dw.png" width="300px" />
+
 In this example we will use the SDK to view basic information in a DataWindow.
 
 If you have not created a DataWindow, visit the [creating a DataWindow](00_create_data_window.md) page.

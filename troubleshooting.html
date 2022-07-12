@@ -2,10 +2,10 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Accessing Stations in a DataWindow" href="02_station.html" /><link rel="prev" title="Create a DataWindow" href="00_create_data_window.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="What to do next?" href="what_to_do_next.html" />
 
     <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
-        <title>Viewing Data Window Metadata - RedVox DataWindow Examples</title>
+        <title>Troubleshooting - RedVox DataWindow Examples</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -133,7 +133,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -162,10 +162,10 @@
 <li class="toctree-l1"><a class="reference internal" href="getting_data.html">Getting Started</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">DataWindow Basics...</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="what_is_data_window.html">What is DataWindow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="00_create_data_window.html">Create a DataWindow</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Viewing Data Window Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_data_window_metadata.html">Viewing Data Window Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_station.html">Accessing Stations in a DataWindow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_station_data.html">Accessing Station Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_sensor_data.html">Accessing Sensors in a Station</a></li>
@@ -179,9 +179,9 @@
 <li class="toctree-l1"><a class="reference internal" href="04a_sensor_units.html">Channels and Units of Sensors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For more information:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="what_to_do_next.html">What to do next?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Troubleshooting</a></li>
 </ul>
 
 </div>
@@ -208,62 +208,65 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <div class="section" id="viewing-data-window-metadata">
-<h1>Viewing Data Window Metadata<a class="headerlink" href="#viewing-data-window-metadata" title="Permalink to this headline">#</a></h1>
-<img src="../../img/dw_fc_dw.png" width="300px"/>
-<p>In this example we will use the SDK to view basic information in a DataWindow.</p>
-<p>If you have not created a DataWindow, visit the <a class="reference internal" href="00_create_data_window.html"><span class="doc std std-doc">creating a DataWindow</span></a> page.
-If you have an existing DataWindow, visit the
-<a class="reference internal" href="00b_save_load_data_window.html#loading-a-pre-constructed-datawindow"><span class="std std-doc">saving and loading a DataWindow</span></a> page.
-You must have performed this step before working with the examples on this page.</p>
-<div class="section" id="accessing-datawindow-metadata">
-<h2>Accessing DataWindow Metadata<a class="headerlink" href="#accessing-datawindow-metadata" title="Permalink to this headline">#</a></h2>
-<p>Metadata provides a high-level description of DataWindow.  It is independent of the data recorded by sensors.</p>
-<p>This example shows which functions are used to view the metadata of a DataWindow.</p>
+          <div class="section" id="troubleshooting">
+<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">#</a></h1>
+<p>Refer to this page for common fixes to problems using DataWindow.</p>
+<ul class="simple">
+<li><p>Enable the debug parameter in DataWindow to display any errors encountered while creating DataWindow.</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">redvox.common.data_window</span> <span class="kn">import</span> <span class="n">DataWindow</span>
 
-<span class="c1"># Replace the following line with an appropriate method of loading data</span>
-<span class="n">dw</span> <span class="o">=</span> <span class="n">DataWindow</span><span class="p">()</span>
+<span class="n">my_event_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"event_name"</span>
 
-<span class="c1"># Print the name of the DataWindow</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">event_name</span><span class="p">)</span>
-
-<span class="c1"># Print the origin of the DataWindow's event of interest</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">event_origin</span><span class="p">)</span>
-
-<span class="c1"># Print the SDK version used to create the DataWindow</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">sdk_version</span><span class="p">())</span>
-
-<span class="c1"># Print the configuration parameters of the DataWindow</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">config</span><span class="p">())</span>
-
-<span class="c1"># Print the directory where the DataWindow will be saved to</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">save_dir</span><span class="p">())</span>
-
-<span class="c1"># Print the type of file the DataWindow will be saved as</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">out_type</span><span class="p">())</span>
-
-<span class="c1"># Print the Station ids in the DataWindow</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">station_ids</span><span class="p">())</span>
-
-<span class="c1"># Print the entire DataWindow metadata without station ids</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="p">)</span>
-
-<span class="c1"># Print the entire DataWindow metadata in a neatly formatted fashion</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">pretty</span><span class="p">())</span>
-
-<span class="c1"># Print the entire DataWindow metadata as a Python dictionary</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">as_dict</span><span class="p">())</span>
+<span class="n">datawindow</span> <span class="o">=</span> <span class="n">DataWindow</span><span class="p">(</span><span class="n">event_name</span><span class="o">=</span><span class="n">my_event_name</span><span class="p">,</span>
+                        <span class="c1"># ...</span>
+                        <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now that you have accessed the DataWindow metadata, we will demonstrate how to <a class="reference internal" href="02_station.html"><span class="doc std std-doc">access Stations</span></a>
-in the next section.</p>
+<ul class="simple">
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">print_errors()</span></code> function of DataWindow to display any errors.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">redvox.common.data_window</span> <span class="kn">import</span> <span class="n">DataWindow</span>
+
+<span class="n">my_datawindow</span><span class="p">:</span> <span class="n">DataWindow</span> <span class="o">=</span> <span class="n">DataWindow</span><span class="p">()</span>
+
+<span class="n">my_datawindow</span><span class="o">.</span><span class="n">print_errors</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Check if the redvox SDK is installed.</p></li>
+<li><p>If you can’t access the DataWindow class, include this line to import DataWindow into your project:
+<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">redvox.common.data_window</span> <span class="pre">import</span> <span class="pre">DataWindow</span></code></p></li>
+<li><p>Check the value of <code class="docutils literal notranslate"><span class="pre">input_dir</span></code> in the DataWindowConfig for any errors, and that the files within the directory are in
+one of two formats (structured or unstructured) described in the <a class="reference internal" href="00_create_data_window.html"><span class="doc std std-doc">Creating a DataWindow</span></a> example.
+Use the appropriate value for the <code class="docutils literal notranslate"><span class="pre">structured</span></code> parameter of DataWindowConfig.</p></li>
+<li><p>When working with structured directories, ensure that all API 1000 (API M) files are in a directory called <code class="docutils literal notranslate"><span class="pre">api1000</span></code>
+and all API 900 files are in a directory called <code class="docutils literal notranslate"><span class="pre">api900</span></code>.  API 1000 files end in <code class="docutils literal notranslate"><span class="pre">.rdvxm</span></code> and API 900 files end in <code class="docutils literal notranslate"><span class="pre">.rdvxz</span></code></p></li>
+<li><p>Adjust the start and end datetime values of DataWindow, as described in the
+<a class="reference internal" href="00a_data_window_parameters.html"><span class="doc std std-doc">DataWindow Parameters</span></a> section.
+Timestamps are in <a class="reference external" href="https://www.timeanddate.com/time/aboututc.html">UTC</a>.  Use the
+<a class="reference external" href="https://redvoxinc.github.io/redvox-sdk/api_docs/redvox/common/date_time_utils.html">date time utilities</a>
+provided in <code class="docutils literal notranslate"><span class="pre">redvox.common.date_time_utils</span></code> to convert UTC epoch times into datetimes.</p></li>
+<li><p>Check your files for non-typical extensions.  <code class="docutils literal notranslate"><span class="pre">.rdvxm</span></code> and <code class="docutils literal notranslate"><span class="pre">.rdxvz</span></code> are the two expected file extensions.
+If you have other file extensions, those files may not work with DataWindow.</p></li>
+<li><p>If you are loading a DataWindow from an existing file, compare the DataWindow’s sdk_version() with the version you
+have installed.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">redvox</span>
+<span class="kn">from</span> <span class="nn">redvox.common.data_window</span> <span class="kn">import</span> <span class="n">DataWindow</span>
+
+<span class="n">dw</span> <span class="o">=</span> <span class="n">DataWindow</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"path/to/file.json"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Installed Version: "</span><span class="p">,</span> <span class="n">redvox</span><span class="o">.</span><span class="n">version</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"DataWindow Version: "</span><span class="p">,</span> <span class="n">dw</span><span class="o">.</span><span class="n">sdk_version</span><span class="p">())</span>
+</pre></div>
 </div>
 </div>
 
@@ -272,23 +275,15 @@ in the next section.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="02_station.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Accessing Stations in a DataWindow</div>
-              </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="00_create_data_window.html">
+          
+          <a class="prev-page" href="what_to_do_next.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Create a DataWindow</div>
+                <div class="title">What to do next?</div>
                 
               </div>
             </a>
@@ -317,27 +312,8 @@ in the next section.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            Contents
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Viewing Data Window Metadata</a><ul>
-<li><a class="reference internal" href="#accessing-datawindow-metadata">Accessing DataWindow Metadata</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

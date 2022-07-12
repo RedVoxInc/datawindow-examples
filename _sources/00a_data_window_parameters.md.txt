@@ -1,5 +1,7 @@
 # DataWindow Parameters
 
+<img src="../../img/dw_fc_dw.png" width="300px" />
+
 In this example, we will go over all the parameters you can pass into DataWindow to customize the result.
 
 DataWindow has several parameters, with many of them utilizing default values in order to provide a convenient

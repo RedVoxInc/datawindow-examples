@@ -1,5 +1,7 @@
 # Save and Load DataWindow
 
+<img src="../../img/dw_fc_dw.png" width="300px" />
+
 This example shows how to save a DataWindow to disk and load it from disk.
 
 ## Saving a DataWindow

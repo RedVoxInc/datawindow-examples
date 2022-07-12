@@ -2,10 +2,10 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Accessing Stations in a DataWindow" href="02_station.html" /><link rel="prev" title="Create a DataWindow" href="00_create_data_window.html" />
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="What to do next?" href="what_to_do_next.html" /><link rel="prev" title="Event Data" href="03b_event_data.html" />
 
     <link rel="shortcut icon" href="_static/favicon.ico"/><meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
-        <title>Viewing Data Window Metadata - RedVox DataWindow Examples</title>
+        <title>Channels and Units of Sensors - RedVox DataWindow Examples</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -133,7 +133,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -162,21 +162,21 @@
 <li class="toctree-l1"><a class="reference internal" href="getting_data.html">Getting Started</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">DataWindow Basics...</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="what_is_data_window.html">What is DataWindow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="00_create_data_window.html">Create a DataWindow</a></li>
-<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Viewing Data Window Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_data_window_metadata.html">Viewing Data Window Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_station.html">Accessing Stations in a DataWindow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_station_data.html">Accessing Station Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04_sensor_data.html">Accessing Sensors in a Station</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">DataWindow Advanced...</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00a_data_window_parameters.html">DataWindow Parameters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="00b_save_load_data_window.html">Save and Load DataWindow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03a_time_synchronization.html">Time Synchronization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03b_event_data.html">Event Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04a_sensor_units.html">Channels and Units of Sensors</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Channels and Units of Sensors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For more information:</span></p>
 <ul>
@@ -208,63 +208,219 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <div class="section" id="viewing-data-window-metadata">
-<h1>Viewing Data Window Metadata<a class="headerlink" href="#viewing-data-window-metadata" title="Permalink to this headline">#</a></h1>
-<img src="../../img/dw_fc_dw.png" width="300px"/>
-<p>In this example we will use the SDK to view basic information in a DataWindow.</p>
-<p>If you have not created a DataWindow, visit the <a class="reference internal" href="00_create_data_window.html"><span class="doc std std-doc">creating a DataWindow</span></a> page.
-If you have an existing DataWindow, visit the
-<a class="reference internal" href="00b_save_load_data_window.html#loading-a-pre-constructed-datawindow"><span class="std std-doc">saving and loading a DataWindow</span></a> page.
-You must have performed this step before working with the examples on this page.</p>
-<div class="section" id="accessing-datawindow-metadata">
-<h2>Accessing DataWindow Metadata<a class="headerlink" href="#accessing-datawindow-metadata" title="Permalink to this headline">#</a></h2>
-<p>Metadata provides a high-level description of DataWindow.  It is independent of the data recorded by sensors.</p>
-<p>This example shows which functions are used to view the metadata of a DataWindow.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">redvox.common.data_window</span> <span class="kn">import</span> <span class="n">DataWindow</span>
-
-<span class="c1"># Replace the following line with an appropriate method of loading data</span>
-<span class="n">dw</span> <span class="o">=</span> <span class="n">DataWindow</span><span class="p">()</span>
-
-<span class="c1"># Print the name of the DataWindow</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">event_name</span><span class="p">)</span>
-
-<span class="c1"># Print the origin of the DataWindow's event of interest</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">event_origin</span><span class="p">)</span>
-
-<span class="c1"># Print the SDK version used to create the DataWindow</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">sdk_version</span><span class="p">())</span>
-
-<span class="c1"># Print the configuration parameters of the DataWindow</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">config</span><span class="p">())</span>
-
-<span class="c1"># Print the directory where the DataWindow will be saved to</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">save_dir</span><span class="p">())</span>
-
-<span class="c1"># Print the type of file the DataWindow will be saved as</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">out_type</span><span class="p">())</span>
-
-<span class="c1"># Print the Station ids in the DataWindow</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">station_ids</span><span class="p">())</span>
-
-<span class="c1"># Print the entire DataWindow metadata without station ids</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="p">)</span>
-
-<span class="c1"># Print the entire DataWindow metadata in a neatly formatted fashion</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">pretty</span><span class="p">())</span>
-
-<span class="c1"># Print the entire DataWindow metadata as a Python dictionary</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dw</span><span class="o">.</span><span class="n">as_dict</span><span class="p">())</span>
-</pre></div>
-</div>
-<p>Now that you have accessed the DataWindow metadata, we will demonstrate how to <a class="reference internal" href="02_station.html"><span class="doc std std-doc">access Stations</span></a>
-in the next section.</p>
-</div>
+          <div class="section" id="channels-and-units-of-sensors">
+<h1>Channels and Units of Sensors<a class="headerlink" href="#channels-and-units-of-sensors" title="Permalink to this headline">#</a></h1>
+<img src="../../img/dw_fc_snr.png" width="300px"/>
+<p>The table below shows which channels can be accessed by each sensor using the <code class="docutils literal notranslate"><span class="pre">get_channel_data()</span></code> function</p>
+<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sensor name</p></th>
+<th class="head"><p>Channel Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>all</p></td>
+<td><p>timestamps, unaltered_timestamps</p></td>
+</tr>
+<tr class="row-odd"><td><p>audio</p></td>
+<td><p>microphone</p></td>
+</tr>
+<tr class="row-even"><td><p>compressed audio</p></td>
+<td><p>compressed_audio, audio_codec</p></td>
+</tr>
+<tr class="row-odd"><td><p>image</p></td>
+<td><p>image, image_codec</p></td>
+</tr>
+<tr class="row-even"><td><p>pressure</p></td>
+<td><p>pressure</p></td>
+</tr>
+<tr class="row-odd"><td><p>light</p></td>
+<td><p>light</p></td>
+</tr>
+<tr class="row-even"><td><p>proximity</p></td>
+<td><p>proximity</p></td>
+</tr>
+<tr class="row-odd"><td><p>ambient temperature</p></td>
+<td><p>ambient_temp</p></td>
+</tr>
+<tr class="row-even"><td><p>relative humidity</p></td>
+<td><p>rel_humidity</p></td>
+</tr>
+<tr class="row-odd"><td><p>accelerometer</p></td>
+<td><p>accelerometer_x, accelerometer_y, accelerometer_z</p></td>
+</tr>
+<tr class="row-even"><td><p>magnetometer</p></td>
+<td><p>magnetometer_x, magnetometer_y, magnetometer_z</p></td>
+</tr>
+<tr class="row-odd"><td><p>linear acceleration</p></td>
+<td><p>linear_accel_x, linear_accel_y, linear_accel_z</p></td>
+</tr>
+<tr class="row-even"><td><p>orientation</p></td>
+<td><p>orientation_x, orientation_y, orientation_z</p></td>
+</tr>
+<tr class="row-odd"><td><p>rotation vector</p></td>
+<td><p>rotation_vector_x, rotation_vector_y, rotation_vector_z</p></td>
+</tr>
+<tr class="row-even"><td><p>gyroscope</p></td>
+<td><p>gyroscope_x, gyroscope_y, gyroscope_z</p></td>
+</tr>
+<tr class="row-odd"><td><p>gravity</p></td>
+<td><p>gravity_x, gravity_y, gravity_z</p></td>
+</tr>
+<tr class="row-even"><td><p>location, best location</p></td>
+<td><p>gps_timestamps, latitude, longitude, altitude, speed, bearing, horizontal_accuracy, vertical_accuracy, speed_accuracy, bearing_accuracy, location_provider</p></td>
+</tr>
+<tr class="row-odd"><td><p>station health</p></td>
+<td><p>battery_charge_remaining, battery_current_strength, internal_temp_c, network_type, network_strength, power_state, avail_ram, avail_disk, cell_service, cpu_utilization, wifi_wake_lock, screen_state, screen_brightness</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>For more details on accessing the values from specific types of sensors, please read
+<a class="reference external" href="https://github.com/RedVoxInc/redvox-python-sdk/tree/master/docs/python_sdk/data_window/station#sensor-subclass-functions">Sensor Subclasses</a>.</p>
+<p>The table below lists the sensors and their data’s units</p>
+<div class="table-wrapper"><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sensor name</p></th>
+<th class="head"><p>Channel Name</p></th>
+<th class="head"><p>units of data</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>all</p></td>
+<td><p>timestamps, unaltered_timestamps</p></td>
+<td><p>microseconds since epoch UTC</p></td>
+</tr>
+<tr class="row-odd"><td><p>accelerometer</p></td>
+<td><p></p></td>
+<td><p>meters/second^2</p></td>
+</tr>
+<tr class="row-even"><td><p>ambient temperature</p></td>
+<td><p></p></td>
+<td><p>degrees Celsius</p></td>
+</tr>
+<tr class="row-odd"><td><p>audio</p></td>
+<td><p></p></td>
+<td><p>normalized counts (normalization constant = 0x7FFFFF)</p></td>
+</tr>
+<tr class="row-even"><td><p>compressed audio</p></td>
+<td><p></p></td>
+<td><p>bytes (codec specific)</p></td>
+</tr>
+<tr class="row-odd"><td><p>gravity</p></td>
+<td><p></p></td>
+<td><p>meters/second^2</p></td>
+</tr>
+<tr class="row-even"><td><p>gyroscope</p></td>
+<td><p></p></td>
+<td><p>radians/second</p></td>
+</tr>
+<tr class="row-odd"><td><p>image</p></td>
+<td><p></p></td>
+<td><p>bytes (codec specific)</p></td>
+</tr>
+<tr class="row-even"><td><p>light</p></td>
+<td><p></p></td>
+<td><p>lux</p></td>
+</tr>
+<tr class="row-odd"><td><p>linear acceleration</p></td>
+<td><p></p></td>
+<td><p>meters/second^2</p></td>
+</tr>
+<tr class="row-even"><td><p>magnetometer</p></td>
+<td><p></p></td>
+<td><p>microtesla</p></td>
+</tr>
+<tr class="row-odd"><td><p>orientation</p></td>
+<td><p></p></td>
+<td><p>radians</p></td>
+</tr>
+<tr class="row-even"><td><p>pressure</p></td>
+<td><p></p></td>
+<td><p>kilopascal (this is also known as barometer sensor)</p></td>
+</tr>
+<tr class="row-odd"><td><p>proximity</p></td>
+<td><p></p></td>
+<td><p>cm (this is also known as infrared sensor)</p></td>
+</tr>
+<tr class="row-even"><td><p>relative humidity</p></td>
+<td><p></p></td>
+<td><p>percentage</p></td>
+</tr>
+<tr class="row-odd"><td><p>rotation vector</p></td>
+<td><p></p></td>
+<td><p>Unitless</p></td>
+</tr>
+<tr class="row-even"><td><p>location, best location</p></td>
+<td><p>gps_timestamps</p></td>
+<td><p>microseconds since epoch UTC</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>latitude, longitude, bearing, bearing accuracy</p></td>
+<td><p>degrees</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>altitude, horizontal accuracy, vertical accuracy</p></td>
+<td><p>meters</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>speed, speed_accuracy</p></td>
+<td><p>meters per second</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>location_provider</p></td>
+<td><p>enumeration of LocationProvider</p></td>
+</tr>
+<tr class="row-odd"><td><p>station health</p></td>
+<td><p>battery_charge_remaining, cpu_utilization, screen_brightness</p></td>
+<td><p>percentage</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>battery_current_strength</p></td>
+<td><p>microamperes</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>internal_temp_c</p></td>
+<td><p>degrees Celsius</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>network_type</p></td>
+<td><p>enumeration of NetworkType</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>network_strength</p></td>
+<td><p>decibel</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>power_state</p></td>
+<td><p>enumeration of PowerState</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>avail_ram, avail_disk</p></td>
+<td><p>bytes</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>cell_service</p></td>
+<td><p>enumeration of CellServiceState</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>wifi_wake_lock</p></td>
+<td><p>enumeration of WifiWakeLock</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>screen_state</p></td>
+<td><p>enumeration of ScreenState</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>If Channel Name is blank, then all non-timestamp channels in the table have the unit specified.</p>
+<p>Refer to the previous table for specific channel names for each sensor.</p>
+<p>It is intentional that location and best location sensors share the same channel names.</p>
 </div>
 
         </article>
@@ -272,23 +428,23 @@ in the next section.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="02_station.html">
+          <a class="next-page" href="what_to_do_next.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Accessing Stations in a DataWindow</div>
+                <div class="title">What to do next?</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="00_create_data_window.html">
+          <a class="prev-page" href="03b_event_data.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Create a DataWindow</div>
+                <div class="title">Event Data</div>
                 
               </div>
             </a>
@@ -317,27 +473,8 @@ in the next section.</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            Contents
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Viewing Data Window Metadata</a><ul>
-<li><a class="reference internal" href="#accessing-datawindow-metadata">Accessing DataWindow Metadata</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

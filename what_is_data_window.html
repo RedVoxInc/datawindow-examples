@@ -176,10 +176,12 @@
 <li class="toctree-l1"><a class="reference internal" href="00b_save_load_data_window.html">Save and Load DataWindow</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03a_time_synchronization.html">Time Synchronization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03b_event_data.html">Event Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04a_sensor_units.html">Channels and Units of Sensors</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For more information:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="what_to_do_next.html">What to do next?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 
 </div>
@@ -221,7 +223,10 @@ set of data it can find to the user as efficiently as possible.</p></li>
 occur some time between the start and end times of the DataWindow.</p></li>
 <li><p>A DataWindow is intended to contain one or more Stations, with each Station containing one or more Sensors.  Stations
 are expected to at least have an Audio Sensor.  While it is possible for DataWindow to have 0 Stations, such a
-DataWindow is uninteresting and is recommended to be discarded.</p></li>
+DataWindow is uninteresting and is recommended to be discarded.  Below is a diagram describing this layout:</p></li>
+</ul>
+<img align="center" src="../../img/dw_flowchart.png" width="500px"/>
+<ul class="simple">
 <li><p>DataWindow uses default values for many of its properties, so it can be created using only the raw data files.  We
 recommend that you set several of the properties in order to produce a higher-quality result.</p></li>
 <li><p>DataWindow introduces small margins of error into the data during the aggregation process.  The error is introduced
