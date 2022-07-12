@@ -1,5 +1,7 @@
 # Create a DataWindow
 
+<img src="../../img/dw_fc_dw.png" width="300px" />
+
 In this example we will demonstrate how to create a DataWindow using raw data files.
 
 > **_Please note:_**
@@ -51,6 +53,9 @@ dw = DataWindow("my_dw", config=dw_config)
 
 You may want more control over which data is loaded into DataWindow.  Please view the 
 [DataWindow Parameters](00a_data_window_parameters.md) example for more details.
+
+If you encounter any issues while creating a DataWindow, refer to the page on 
+[Troubleshooting](troubleshooting.md)
 
 Now that you have a DataWindow, we will demonstrate how to [access the metadata](01_data_window_metadata.md) in the 
 next section.

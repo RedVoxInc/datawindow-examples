@@ -1,5 +1,7 @@
 # Accessing Sensors in a Station
 
+<img src="../../img/dw_fc_snr.png" width="300px" />
+
 In this example we will access the Sensor data in a Station.
 
 ## What is Sensor
@@ -185,5 +187,8 @@ target_channel = "value_from_channels"
 # get the data
 data = sen.get_data_channel(target_channel)
 ```
+
+Refer to these [tables](04a_sensor_units.md) for information on the possible channels for each sensor, as well as the 
+units for each channel.
 
 You have finished the DataWindow examples.  Click here to view the [next steps](what_to_do_next.md).

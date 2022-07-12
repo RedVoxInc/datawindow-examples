@@ -1,5 +1,7 @@
 # Accessing Station Data
 
+<img src="../../img/dw_fc_stn_md.png" width="300px" />
+
 In this example we will access data stored by the Station.
 
 ## Time Synchronization Data

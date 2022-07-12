@@ -39,6 +39,8 @@ Contents
 - :doc:`00b_save_load_data_window`
 - :doc:`03a_time_synchronization`
 - :doc:`03b_event_data`
+- :doc:`04a_sensor_units`
+- :doc:`troubleshooting`
 
 Basic definitions
 ------------------
@@ -103,6 +105,7 @@ The following terms are common terminology used throughout this documentation.
    00b_save_load_data_window
    03a_time_synchronization
    03b_event_data
+   04a_sensor_units
 
 .. toctree::
    :maxdepth: 2
@@ -110,5 +113,4 @@ The following terms are common terminology used throughout this documentation.
    :caption: For more information:
 
    what_to_do_next
-
-
+   troubleshooting
