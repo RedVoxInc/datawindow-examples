@@ -1,6 +1,6 @@
 # Create a DataWindow
 
-<img src="../../img/dw_fc_dw.png" width="300px" />
+![](../img/dw_fc_dw.png)
 
 In this example we will demonstrate how to create a DataWindow using raw data files.
 

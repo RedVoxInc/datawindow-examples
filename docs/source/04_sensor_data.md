@@ -1,6 +1,6 @@
 # Accessing Sensors in a Station
 
-<img src="../../img/dw_fc_snr.png" width="300px" />
+![](../img/dw_fc_snr.png)
 
 In this example we will access the Sensor data in a Station.
 

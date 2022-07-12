@@ -1,6 +1,6 @@
 # Save and Load DataWindow
 
-<img src="../../img/dw_fc_dw.png" width="300px" />
+![](../img/dw_fc_dw.png)
 
 This example shows how to save a DataWindow to disk and load it from disk.
 

@@ -1,6 +1,6 @@
 # Accessing Stations in a DataWindow
 
-<img src="../../img/dw_fc_stn.png" width="300px" />
+![](../img/dw_fc_stn.png)
 
 In this example we will access the Stations in a DataWindow.
 

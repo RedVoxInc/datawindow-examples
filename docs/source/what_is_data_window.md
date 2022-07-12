@@ -10,7 +10,7 @@
   are expected to at least have an Audio Sensor.  While it is possible for DataWindow to have 0 Stations, such a 
   DataWindow is uninteresting and is recommended to be discarded.  Below is a diagram describing this layout:
 
-<img src="../../img/dw_flowchart.png" align="center" width="500px" />
+![](../img/dw_flowchart.png)
 
 * DataWindow uses default values for many of its properties, so it can be created using only the raw data files.  We 
   recommend that you set several of the properties in order to produce a higher-quality result.

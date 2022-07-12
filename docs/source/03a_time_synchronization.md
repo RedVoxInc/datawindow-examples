@@ -1,6 +1,6 @@
 # Time Synchronization
 
-<img src="../../img/dw_fc_ts.png" width="300px" />
+![](../img/dw_fc_ts.png)
 
 Time synchronization is the process of adjusting raw data timestamps to more accurately represent when the data was 
 recorded.  This is due to inherent drift in the clocks of devices; that is, not all clocks update their time equally.
