@@ -133,7 +133,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -208,7 +208,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -217,6 +217,14 @@
           <div class="section" id="troubleshooting">
 <h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">#</a></h1>
 <p>Refer to this page for common fixes to problems using DataWindow.</p>
+<div class="section" id="first-things-first">
+<h2>First Things First<a class="headerlink" href="#first-things-first" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="getting_data.html#python-setup"><span class="std std-doc">Check if the redvox SDK is installed</span></a>.</p></li>
+</ul>
+</div>
+<div class="section" id="enable-error-reporting">
+<h2>Enable Error Reporting<a class="headerlink" href="#enable-error-reporting" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Enable the debug parameter in DataWindow to display any errors encountered while creating DataWindow.</p></li>
 </ul>
@@ -239,23 +247,42 @@
 <span class="n">my_datawindow</span><span class="o">.</span><span class="n">print_errors</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="check-your-code">
+<h2>Check Your Code<a class="headerlink" href="#check-your-code" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>Check if the redvox SDK is installed.</p></li>
 <li><p>If you can’t access the DataWindow class, include this line to import DataWindow into your project:
 <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">redvox.common.data_window</span> <span class="pre">import</span> <span class="pre">DataWindow</span></code></p></li>
-<li><p>Check the value of <code class="docutils literal notranslate"><span class="pre">input_dir</span></code> in the DataWindowConfig for any errors, and that the files within the directory are in
-one of two formats (structured or unstructured) described in the <a class="reference internal" href="00_create_data_window.html"><span class="doc std std-doc">Creating a DataWindow</span></a> example.
+<li><p>If you can’t access the DataWindowConfig class, include this line to import DataWindowConfig into your project:
+<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">redvox.common.data_window</span> <span class="pre">import</span> <span class="pre">DataWindowConfig</span></code></p></li>
+<li><p>Check the value of the <code class="docutils literal notranslate"><span class="pre">input_dir</span></code> parameter in the DataWindowConfig for any errors.</p></li>
+<li><p>Check that you are using the <a class="reference internal" href="00_create_data_window.html"><span class="doc std std-doc">appropriate value</span></a> for the <code class="docutils literal notranslate"><span class="pre">structured</span></code> parameter of DataWindowConfig.</p></li>
+<li><p>Check all the parameters of DataWindow and DataWindowConfig for any errors.</p></li>
+<li><p>If the results are not what you expect, you can try adjusting the start and end datetime values of
+DataWindow.  Refer to <a class="reference internal" href="00a_data_window_parameters.html#simplified-datawindow-with-parameters"><span class="std std-doc">DataWindow with Parameters</span></a>
+for an example on how to set the timestamps. Timestamps are in <a class="reference external" href="https://www.timeanddate.com/time/aboututc.html">UTC</a>.<br/>
+You may use the <a class="reference external" href="https://redvoxinc.github.io/redvox-sdk/api_docs/redvox/common/date_time_utils.html">date time utilities</a>
+provided in <code class="docutils literal notranslate"><span class="pre">redvox.common.date_time_utils</span></code> to convert UTC epoch times into datetimes.</p></li>
+</ul>
+</div>
+<div class="section" id="check-your-data">
+<h2>Check Your Data<a class="headerlink" href="#check-your-data" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Check that the files within the input directory are in one of two formats
+(<a class="reference internal" href="00_create_data_window.html"><span class="doc std std-doc">structured or unstructured</span></a>) described in the
+<a class="reference internal" href="00_create_data_window.html"><span class="doc std std-doc">Creating a DataWindow</span></a> example.
 Use the appropriate value for the <code class="docutils literal notranslate"><span class="pre">structured</span></code> parameter of DataWindowConfig.</p></li>
 <li><p>When working with structured directories, ensure that all API 1000 (API M) files are in a directory called <code class="docutils literal notranslate"><span class="pre">api1000</span></code>
 and all API 900 files are in a directory called <code class="docutils literal notranslate"><span class="pre">api900</span></code>.  API 1000 files end in <code class="docutils literal notranslate"><span class="pre">.rdvxm</span></code> and API 900 files end in <code class="docutils literal notranslate"><span class="pre">.rdvxz</span></code></p></li>
-<li><p>Adjust the start and end datetime values of DataWindow, as described in the
-<a class="reference internal" href="00a_data_window_parameters.html"><span class="doc std std-doc">DataWindow Parameters</span></a> section.
-Timestamps are in <a class="reference external" href="https://www.timeanddate.com/time/aboututc.html">UTC</a>.  Use the
-<a class="reference external" href="https://redvoxinc.github.io/redvox-sdk/api_docs/redvox/common/date_time_utils.html">date time utilities</a>
-provided in <code class="docutils literal notranslate"><span class="pre">redvox.common.date_time_utils</span></code> to convert UTC epoch times into datetimes.</p></li>
 <li><p>Check your files for non-typical extensions.  <code class="docutils literal notranslate"><span class="pre">.rdvxm</span></code> and <code class="docutils literal notranslate"><span class="pre">.rdxvz</span></code> are the two expected file extensions.
 If you have other file extensions, those files may not work with DataWindow.</p></li>
-<li><p>If you are loading a DataWindow from an existing file, compare the DataWindow’s sdk_version() with the version you
+</ul>
+</div>
+<div class="section" id="loading-existing-datawindows">
+<h2>Loading Existing DataWindows<a class="headerlink" href="#loading-existing-datawindows" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>If you are loading a DataWindow from an existing file, <a class="reference internal" href="00b_save_load_data_window.html#loading-a-pre-constructed-datawindow"><span class="std std-doc">make sure you use the correct function</span></a>.</p></li>
+<li><p>If you are still unable to load the DataWindow, compare the DataWindow’s sdk_version() with the version you
 have installed.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">redvox</span>
@@ -267,6 +294,15 @@ have installed.</p></li>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"DataWindow Version: "</span><span class="p">,</span> <span class="n">dw</span><span class="o">.</span><span class="n">sdk_version</span><span class="p">())</span>
 </pre></div>
+</div>
+<ul class="simple">
+<li><p>If the DataWindow’s version is not equal to the SDK’s version, <a class="reference internal" href="00_create_data_window.html"><span class="doc std std-doc">re-create the DataWindow</span></a>.</p></li>
+<li><p>If you downloaded a DataWindow file from <a class="reference external" href="https://redvox.io">redvox.io</a>, use the website to re-run the report if able.</p></li>
+</ul>
+</div>
+<div class="section" id="if-all-else-fails">
+<h2>If All Else Fails<a class="headerlink" href="#if-all-else-fails" title="Permalink to this headline">#</a></h2>
+<p>Contact the developers.</p>
 </div>
 </div>
 
@@ -312,8 +348,32 @@ have installed.</p></li>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#first-things-first">First Things First</a></li>
+<li><a class="reference internal" href="#enable-error-reporting">Enable Error Reporting</a></li>
+<li><a class="reference internal" href="#check-your-code">Check Your Code</a></li>
+<li><a class="reference internal" href="#check-your-data">Check Your Data</a></li>
+<li><a class="reference internal" href="#loading-existing-datawindows">Loading Existing DataWindows</a></li>
+<li><a class="reference internal" href="#if-all-else-fails">If All Else Fails</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
