@@ -177,6 +177,7 @@
 <li class="toctree-l1"><a class="reference internal" href="03a_time_synchronization.html">Time Synchronization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03b_event_data.html">Event Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04a_sensor_units.html">Channels and Units of Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04a_sensor_units.html#units-of-the-data">Units of the Data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For more information:</span></p>
 <ul class="current">
@@ -258,12 +259,44 @@
 <li><p>Check the value of the <code class="docutils literal notranslate"><span class="pre">input_dir</span></code> parameter in the DataWindowConfig for any errors.</p></li>
 <li><p>Check that you are using the <a class="reference internal" href="00_create_data_window.html"><span class="doc std std-doc">appropriate value</span></a> for the <code class="docutils literal notranslate"><span class="pre">structured</span></code> parameter of DataWindowConfig.</p></li>
 <li><p>Check all the parameters of DataWindow and DataWindowConfig for any errors.</p></li>
-<li><p>If the results are not what you expect, you can try adjusting the start and end datetime values of
-DataWindow.  Refer to <a class="reference internal" href="00a_data_window_parameters.html#simplified-datawindow-with-parameters"><span class="std std-doc">DataWindow with Parameters</span></a>
-for an example on how to set the timestamps. Timestamps are in <a class="reference external" href="https://www.timeanddate.com/time/aboututc.html">UTC</a>.<br/>
-You may use the <a class="reference external" href="https://redvoxinc.github.io/redvox-sdk/api_docs/redvox/common/date_time_utils.html">date time utilities</a>
+<li><p>Check the value of any station IDs when using them in DataWindow parameters or retrieving the data.  IDs may look
+similar to each other.</p></li>
+<li><p>If the results are not what you expect, try adjusting the parameters of DataWindow.<br/>
+Refer to <a class="reference internal" href="00a_data_window_parameters.html#simplified-datawindow-with-parameters"><span class="std std-doc">DataWindow with Parameters</span></a>
+for an example on how to set the most commonly used parameters.
+Timestamps are in <a class="reference external" href="https://www.timeanddate.com/time/aboututc.html">UTC</a>.  You may use the
+<a class="reference external" href="https://redvoxinc.github.io/redvox-sdk/api_docs/redvox/common/date_time_utils.html">date time utilities</a>
 provided in <code class="docutils literal notranslate"><span class="pre">redvox.common.date_time_utils</span></code> to convert UTC epoch times into datetimes.</p></li>
 </ul>
+</div>
+<div class="section" id="unexpected-return-values-from-functions">
+<h2>Unexpected Return Values from Functions<a class="headerlink" href="#unexpected-return-values-from-functions" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Any function that returns a Station or Sensor could return None, as that Station or Sensor may not exist.
+Update the parameters of the function or use a different function as needed.</p></li>
+<li><p>You may get a list of channel names when accessing data in a Sensor.  This means that the channel you are trying to
+access in the Sensor does not exist.  Use one of the listed channel names.</p></li>
+<li><p>Timestamps are often adjusted from the raw data values due to differences in device clock timing.  You may access the
+raw data values using the <code class="docutils literal notranslate"><span class="pre">unaltered_data_timestamps()</span></code> function.  See example below:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">redvox.common.data_window</span> <span class="kn">import</span> <span class="n">DataWindow</span>
+
+<span class="c1"># Replace the following line with an appropriate method of loading data</span>
+<span class="n">dw</span> <span class="o">=</span> <span class="n">DataWindow</span><span class="p">()</span>
+
+<span class="c1"># get the first station</span>
+<span class="n">stn</span> <span class="o">=</span> <span class="n">dw</span><span class="o">.</span><span class="n">first_station</span><span class="p">()</span>
+
+<span class="c1"># get from a specific sensor</span>
+<span class="n">audio</span> <span class="o">=</span> <span class="n">stn</span><span class="o">.</span><span class="n">audio_sensor</span><span class="p">()</span>
+<span class="n">audio_timestamps</span> <span class="o">=</span> <span class="n">audio</span><span class="o">.</span><span class="n">unaltered_data_timestamps</span><span class="p">()</span>
+
+<span class="c1"># get from all sensors</span>
+<span class="n">sensors</span> <span class="o">=</span> <span class="n">stn</span><span class="o">.</span><span class="n">get_station_sensor_types</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sensors</span><span class="p">:</span>
+    <span class="n">timestamps</span> <span class="o">=</span> <span class="n">stn</span><span class="o">.</span><span class="n">get_sensor_by_type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">unaltered_data_timestamps</span><span class="p">()</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="check-your-data">
 <h2>Check Your Data<a class="headerlink" href="#check-your-data" title="Permalink to this headline">#</a></h2>
@@ -364,6 +397,7 @@ have installed.</p></li>
 <li><a class="reference internal" href="#first-things-first">First Things First</a></li>
 <li><a class="reference internal" href="#enable-error-reporting">Enable Error Reporting</a></li>
 <li><a class="reference internal" href="#check-your-code">Check Your Code</a></li>
+<li><a class="reference internal" href="#unexpected-return-values-from-functions">Unexpected Return Values from Functions</a></li>
 <li><a class="reference internal" href="#check-your-data">Check Your Data</a></li>
 <li><a class="reference internal" href="#loading-existing-datawindows">Loading Existing DataWindows</a></li>
 <li><a class="reference internal" href="#if-all-else-fails">If All Else Fails</a></li>

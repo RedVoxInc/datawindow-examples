@@ -97,5 +97,8 @@ print(stn.packet_metadata())
 print(stn.is_timestamps_updated())
 ```
 
+If you encounter any issues while accessing a Station, refer to the page on
+[Troubleshooting](troubleshooting.md#unexpected-return-values-from-functions)
+
 Now that you have looked at Station metadata, we will demonstrate how to [access the data](03_station_data.md) in the
 next section.

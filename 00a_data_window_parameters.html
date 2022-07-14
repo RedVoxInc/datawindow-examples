@@ -177,6 +177,7 @@
 <li class="toctree-l1"><a class="reference internal" href="03a_time_synchronization.html">Time Synchronization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03b_event_data.html">Event Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04a_sensor_units.html">Channels and Units of Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04a_sensor_units.html#units-of-the-data">Units of the Data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For more information:</span></p>
 <ul>
@@ -229,13 +230,16 @@ for an example.</p>
 </div></blockquote>
 <div class="section" id="datawindow">
 <h2>DataWindow<a class="headerlink" href="#datawindow" title="Permalink to this headline">#</a></h2>
-<p>DataWindow has 7 parameters.  We recommend you set at least the <code class="docutils literal notranslate"><span class="pre">event_name</span></code> and <code class="docutils literal notranslate"><span class="pre">config</span></code> parameters.</p>
+<p>DataWindow has 7 parameters.  We recommend you set at least the <code class="docutils literal notranslate"><span class="pre">event_name</span></code> and <code class="docutils literal notranslate"><span class="pre">config</span></code> parameters.
+Refer to the <a class="reference external" href="https://github.com/RedVoxInc/redvox-python-sdk/tree/master/docs/python_sdk/data_window#strongly-recommended-datawindow-parameters">documentation</a>
+for more information about the parameters.</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">event_name</span></code>: A string describing the event of interest and is used to identify the DataWindow.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">event_origin</span></code>: An EventOrigin object describing the physical location of the event of interest.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">config</span></code>: A DataWindowConfig object which sets the search parameters of the DataWindow.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">output_dir</span></code>: The directory where the DataWindow will be saved, if the function is invoked.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">out_type</span></code>: A string denoting the output type when saving DataWindow.  Valid values are: <code class="docutils literal notranslate"><span class="pre">"NONE"</span></code>, <code class="docutils literal notranslate"><span class="pre">"LZ4"</span></code>, and <code class="docutils literal notranslate"><span class="pre">"PARQUET"</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">out_type</span></code>: A string denoting the output type when saving DataWindow.  Valid values are: <code class="docutils literal notranslate"><span class="pre">"NONE"</span></code> (no saving),
+<code class="docutils literal notranslate"><span class="pre">"LZ4"</span></code> (save using lz4 compressed file), and <code class="docutils literal notranslate"><span class="pre">"PARQUET"</span></code> (save using parquet files).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">make_runme</span></code>: A boolean that denotes if a special <code class="docutils literal notranslate"><span class="pre">runme.py</span></code> file is included when saving the DataWindow.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">debug</span></code>: A boolean that denotes if extra information will be printed to the screen during runtime.</p></li>
 </ol>
@@ -257,7 +261,9 @@ for an example.</p>
 </div>
 <div class="section" id="eventorigin">
 <h2>EventOrigin<a class="headerlink" href="#eventorigin" title="Permalink to this headline">#</a></h2>
-<p>EventOrigin is used to describe the physical location of an event of interest.  It has 8 parameters.</p>
+<p>EventOrigin is used to describe the physical location of an event of interest.  It has 8 parameters.
+Refer to the <a class="reference external" href="https://github.com/RedVoxInc/redvox-python-sdk/tree/master/docs/python_sdk/data_window#event-origin">documentation</a>
+for more information about the parameters.</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">provider</span></code>: A string describing the source of the location information.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">lat</span></code>: A float value of the event’s latitude in +/- degrees.</p></li>
@@ -287,8 +293,9 @@ for an example.</p>
 <div class="section" id="datawindowconfig">
 <h2>DataWindowConfig<a class="headerlink" href="#datawindowconfig" title="Permalink to this headline">#</a></h2>
 <p>DataWindowConfig is used to set the search parameters of DataWindow.  It has 13 parameters, one of which is required to
-be set.  We also recommend you take notice of the format of your data’s directory when setting the <code class="docutils literal notranslate"><span class="pre">structured_layout</span></code>
-parameter.</p>
+be set.  Refer to the <a class="reference external" href="https://github.com/RedVoxInc/redvox-python-sdk/tree/master/docs/python_sdk/data_window#datawindowconfig">documentation</a>
+for more information about the parameters.  We also recommend you take notice of the format of your data’s directory
+when setting the <code class="docutils literal notranslate"><span class="pre">structured_layout</span></code> parameter.</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">input_dir</span></code>: The directory that contains all the data.  REQUIRED</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">structured_layout</span></code>: A boolean that denotes if the <code class="docutils literal notranslate"><span class="pre">input_dir</span></code> contains specially named and organized directories of
@@ -394,7 +401,7 @@ it can in the input directory.</p></li>
                 <span class="n">event_origin</span> <span class="o">=</span> <span class="n">eo</span><span class="p">,</span>  <span class="c1"># do not change this line</span>
                 <span class="n">config</span> <span class="o">=</span> <span class="n">dw_cfg</span><span class="p">,</span>    <span class="c1"># do not change this line</span>
                 <span class="n">output_dir</span> <span class="o">=</span> <span class="s2">"."</span><span class="p">,</span>
-                <span class="n">out_type</span> <span class="o">=</span> <span class="s2">"NONE"</span><span class="p">,</span>
+                <span class="n">out_type</span> <span class="o">=</span> <span class="s2">"NONE"</span><span class="p">,</span>  <span class="c1"># use PARQUET for .parquet files and LZ4 for one compressed file</span>
                 <span class="n">make_runme</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
                 <span class="n">debug</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>

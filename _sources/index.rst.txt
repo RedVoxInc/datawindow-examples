@@ -73,8 +73,7 @@ The following terms are common terminology used throughout this documentation.
   A station should always have audio sensor (and hence audio data).
 
 - **Epoch** or **epoch time**: unix time (also referred to as the epoch time), the number of seconds since 1 January 1970.
-  The RedPandas' native unit of time is UTC epoch time in seconds. For example the epoch time for Thursday, July 1, 2021 at 9:00:00 am
-  UTC would be 1625130000.
+  For example the epoch time for Thursday, July 1, 2021 at 9:00:00 am UTC would be 1625130000.
 
 .. toctree::
    :maxdepth: 2

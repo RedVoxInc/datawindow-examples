@@ -177,6 +177,7 @@
 <li class="toctree-l1"><a class="reference internal" href="03a_time_synchronization.html">Time Synchronization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03b_event_data.html">Event Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04a_sensor_units.html">Channels and Units of Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04a_sensor_units.html#units-of-the-data">Units of the Data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For more information:</span></p>
 <ul>
@@ -326,6 +327,27 @@ Sensor to exist: <code class="docutils literal notranslate"><span class="pre">na
 functions depending on the type of the Sensor.</p>
 <p>Refer to the documentation on <a class="reference external" href="https://github.com/RedVoxInc/redvox-python-sdk/tree/master/docs/python_sdk/data_window/station#sensor-subclass-functions">Sensor Subclass</a>
 for more information about these functions.</p>
+<p>All Sensors have timestamps, which are in <a class="reference external" href="https://www.timeanddate.com/time/aboututc.html">UTC</a>.</p>
+<p>This example shows how to access the timestamps of a Sensor:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">redvox.common.data_window</span> <span class="kn">import</span> <span class="n">DataWindow</span>
+
+<span class="c1"># Replace the following line with an appropriate method of loading data</span>
+<span class="n">dw</span> <span class="o">=</span> <span class="n">DataWindow</span><span class="p">()</span>
+
+<span class="c1"># get the first station</span>
+<span class="n">stn</span> <span class="o">=</span> <span class="n">dw</span><span class="o">.</span><span class="n">first_station</span><span class="p">()</span>
+
+<span class="c1"># get from a specific sensor</span>
+<span class="n">audio</span> <span class="o">=</span> <span class="n">stn</span><span class="o">.</span><span class="n">audio_sensor</span><span class="p">()</span>
+<span class="n">audio_timestamps</span> <span class="o">=</span> <span class="n">audio</span><span class="o">.</span><span class="n">data_timestamps</span><span class="p">()</span>
+
+<span class="c1"># get from all sensors</span>
+<span class="n">sensors</span> <span class="o">=</span> <span class="n">stn</span><span class="o">.</span><span class="n">get_station_sensor_types</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sensors</span><span class="p">:</span>
+    <span class="n">timestamps</span> <span class="o">=</span> <span class="n">stn</span><span class="o">.</span><span class="n">get_sensor_by_type</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">data_timestamps</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Refer to this <a class="reference internal" href="04a_sensor_units.html#units-of-the-data"><span class="std std-doc">table</span></a> for more information on the units of the data.</p>
 <p>This example shows how to access data from commonly used sensors:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">redvox.common.data_window</span> <span class="kn">import</span> <span class="n">DataWindow</span>
 
@@ -374,24 +396,10 @@ for more information about these functions.</p>
 <span class="n">data_alt</span> <span class="o">=</span> <span class="n">loc</span><span class="o">.</span><span class="n">get_altitude_data</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Here is an example of accessing data from any Sensor regardless of type:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">redvox.common.sensor_data</span> <span class="kn">import</span> <span class="n">SensorData</span>
-
-<span class="c1"># Replace the following line with an appropriate method of loading sensor data</span>
-<span class="n">sen</span> <span class="o">=</span> <span class="n">SensorData</span><span class="p">(</span><span class="s2">"test_sensor"</span><span class="p">)</span>
-
-<span class="c1"># get all the possible channels</span>
-<span class="n">channels</span> <span class="o">=</span> <span class="n">sen</span><span class="o">.</span><span class="n">data_channels</span><span class="p">()</span>
-
-<span class="c1"># choose a channel from the above list</span>
-<span class="n">target_channel</span> <span class="o">=</span> <span class="s2">"value_from_channels"</span>
-
-<span class="c1"># get the data</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">sen</span><span class="o">.</span><span class="n">get_data_channel</span><span class="p">(</span><span class="n">target_channel</span><span class="p">)</span>
-</pre></div>
-</div>
 <p>Refer to these <a class="reference internal" href="04a_sensor_units.html"><span class="doc std std-doc">tables</span></a> for information on the possible channels for each sensor, as well as the
 units for each channel.</p>
+<p>If you encounter any issues while accessing a Sensor, refer to the page on
+<a class="reference internal" href="troubleshooting.html#unexpected-return-values-from-functions"><span class="std std-doc">Troubleshooting</span></a></p>
 <p>You have finished the DataWindow examples.  Click here to view the <a class="reference internal" href="what_to_do_next.html"><span class="doc std std-doc">next steps</span></a>.</p>
 </div>
 </div>

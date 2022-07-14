@@ -133,7 +133,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -177,6 +177,7 @@
 <li class="toctree-l1"><a class="reference internal" href="03a_time_synchronization.html">Time Synchronization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03b_event_data.html">Event Data</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Channels and Units of Sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#units-of-the-data">Units of the Data</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For more information:</span></p>
 <ul>
@@ -208,7 +209,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -281,8 +282,27 @@
 </tr>
 </tbody>
 </table></div>
+<p>Use the channel name to get a single data channel from a Sensor:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">redvox.common.sensor_data</span> <span class="kn">import</span> <span class="n">SensorData</span>
+
+<span class="c1"># Replace the following line with an appropriate method of loading a Sensor</span>
+<span class="n">sen</span> <span class="o">=</span> <span class="n">SensorData</span><span class="p">(</span><span class="s2">"test_sensor"</span><span class="p">)</span>
+
+<span class="c1"># get all the possible channels</span>
+<span class="n">channels</span> <span class="o">=</span> <span class="n">sen</span><span class="o">.</span><span class="n">data_channels</span><span class="p">()</span>
+
+<span class="c1"># choose a channel from the above list</span>
+<span class="n">target_channel</span> <span class="o">=</span> <span class="s2">"value_from_channels"</span>
+
+<span class="c1"># get the data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">sen</span><span class="o">.</span><span class="n">get_data_channel</span><span class="p">(</span><span class="n">target_channel</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>For more details on accessing the values from specific types of sensors, please read
 <a class="reference external" href="https://github.com/RedVoxInc/redvox-python-sdk/tree/master/docs/python_sdk/data_window/station#sensor-subclass-functions">Sensor Subclasses</a>.</p>
+</div>
+<div class="section" id="units-of-the-data">
+<h1>Units of the Data<a class="headerlink" href="#units-of-the-data" title="Permalink to this headline">#</a></h1>
 <p>The table below lists the sensors and their data’s units</p>
 <div class="table-wrapper"><table class="colwidths-auto docutils align-default">
 <thead>
@@ -473,8 +493,25 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Channels and Units of Sensors</a></li>
+<li><a class="reference internal" href="#units-of-the-data">Units of the Data</a></li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
