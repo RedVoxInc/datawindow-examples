@@ -18,12 +18,15 @@ experience.  We will explain each of these parameters, as well as provide sample
 ## DataWindow
 
 DataWindow has 7 parameters.  We recommend you set at least the `event_name` and `config` parameters.
+Refer to the [documentation](https://github.com/RedVoxInc/redvox-python-sdk/tree/master/docs/python_sdk/data_window#strongly-recommended-datawindow-parameters) 
+for more information about the parameters.
 
 1. `event_name`: A string describing the event of interest and is used to identify the DataWindow.
 2. `event_origin`: An EventOrigin object describing the physical location of the event of interest.
 3. `config`: A DataWindowConfig object which sets the search parameters of the DataWindow.
 4. `output_dir`: The directory where the DataWindow will be saved, if the function is invoked.
-5. `out_type`: A string denoting the output type when saving DataWindow.  Valid values are: `"NONE"`, `"LZ4"`, and `"PARQUET"`.
+5. `out_type`: A string denoting the output type when saving DataWindow.  Valid values are: `"NONE"` (no saving), 
+   `"LZ4"` (save using lz4 compressed file), and `"PARQUET"` (save using parquet files).
 6. `make_runme`: A boolean that denotes if a special `runme.py` file is included when saving the DataWindow.
 7. `debug`: A boolean that denotes if extra information will be printed to the screen during runtime.
 
@@ -47,6 +50,8 @@ dw = DataWindow(event_name="dw",
 ## EventOrigin
 
 EventOrigin is used to describe the physical location of an event of interest.  It has 8 parameters.
+Refer to the [documentation](https://github.com/RedVoxInc/redvox-python-sdk/tree/master/docs/python_sdk/data_window#event-origin)
+for more information about the parameters.
 
 1. `provider`: A string describing the source of the location information.
 2. `lat`: A float value of the event's latitude in +/- degrees.
@@ -77,8 +82,9 @@ eo = EventOrigin(provider = "UNKNOWN",
 ## DataWindowConfig
 
 DataWindowConfig is used to set the search parameters of DataWindow.  It has 13 parameters, one of which is required to 
-be set.  We also recommend you take notice of the format of your data's directory when setting the `structured_layout` 
-parameter.
+be set.  Refer to the [documentation](https://github.com/RedVoxInc/redvox-python-sdk/tree/master/docs/python_sdk/data_window#datawindowconfig)
+for more information about the parameters.  We also recommend you take notice of the format of your data's directory 
+when setting the `structured_layout` parameter.
 
 1. `input_dir`: The directory that contains all the data.  REQUIRED
 2. `structured_layout`: A boolean that denotes if the `input_dir` contains specially named and organized directories of 
@@ -187,7 +193,7 @@ dw = DataWindow(event_name="dw",
                 event_origin = eo,  # do not change this line
                 config = dw_cfg,    # do not change this line
                 output_dir = ".",
-                out_type = "NONE",
+                out_type = "NONE",  # use PARQUET for .parquet files and LZ4 for one compressed file
                 make_runme = False,
                 debug = False)
 ```

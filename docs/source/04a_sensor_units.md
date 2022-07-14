@@ -25,8 +25,28 @@ The table below shows which channels can be accessed by each sensor using the `g
 |location, best location|gps_timestamps, latitude, longitude, altitude, speed, bearing, horizontal_accuracy, vertical_accuracy, speed_accuracy, bearing_accuracy, location_provider|
 |station health         |battery_charge_remaining, battery_current_strength, internal_temp_c, network_type, network_strength, power_state, avail_ram, avail_disk, cell_service, cpu_utilization, wifi_wake_lock, screen_state, screen_brightness|
 
+Use the channel name to get a single data channel from a Sensor:
+
+```python
+from redvox.common.sensor_data import SensorData
+
+# Replace the following line with an appropriate method of loading a Sensor
+sen = SensorData("test_sensor")
+
+# get all the possible channels
+channels = sen.data_channels()
+
+# choose a channel from the above list
+target_channel = "value_from_channels"
+
+# get the data
+data = sen.get_data_channel(target_channel)
+```
+
 For more details on accessing the values from specific types of sensors, please read 
 [Sensor Subclasses](https://github.com/RedVoxInc/redvox-python-sdk/tree/master/docs/python_sdk/data_window/station#sensor-subclass-functions).
+
+# Units of the Data
 
 The table below lists the sensors and their data's units
 

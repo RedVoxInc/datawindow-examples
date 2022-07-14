@@ -42,11 +42,45 @@ my_datawindow.print_errors()
 
 * Check all the parameters of DataWindow and DataWindowConfig for any errors.
 
-* If the results are not what you expect, you can try adjusting the start and end datetime values of 
-  DataWindow.  Refer to [DataWindow with Parameters](00a_data_window_parameters.md#simplified-datawindow-with-parameters)
-  for an example on how to set the timestamps. Timestamps are in [UTC](https://www.timeanddate.com/time/aboututc.html).  
-  You may use the [date time utilities](https://redvoxinc.github.io/redvox-sdk/api_docs/redvox/common/date_time_utils.html)
+* Check the value of any station IDs when using them in DataWindow parameters or retrieving the data.  IDs may look 
+  similar to each other.
+
+* If the results are not what you expect, try adjusting the parameters of DataWindow.  
+  Refer to [DataWindow with Parameters](00a_data_window_parameters.md#simplified-datawindow-with-parameters)
+  for an example on how to set the most commonly used parameters.
+  Timestamps are in [UTC](https://www.timeanddate.com/time/aboututc.html).  You may use the 
+  [date time utilities](https://redvoxinc.github.io/redvox-sdk/api_docs/redvox/common/date_time_utils.html)
   provided in `redvox.common.date_time_utils` to convert UTC epoch times into datetimes.
+
+## Unexpected Return Values from Functions
+
+* Any function that returns a Station or Sensor could return None, as that Station or Sensor may not exist. 
+  Update the parameters of the function or use a different function as needed.
+
+* You may get a list of channel names when accessing data in a Sensor.  This means that the channel you are trying to 
+  access in the Sensor does not exist.  Use one of the listed channel names.
+
+* Timestamps are often adjusted from the raw data values due to differences in device clock timing.  You may access the
+  raw data values using the `unaltered_data_timestamps()` function.  See example below:
+
+```python
+from redvox.common.data_window import DataWindow
+
+# Replace the following line with an appropriate method of loading data
+dw = DataWindow()
+
+# get the first station
+stn = dw.first_station()
+
+# get from a specific sensor
+audio = stn.audio_sensor()
+audio_timestamps = audio.unaltered_data_timestamps()
+
+# get from all sensors
+sensors = stn.get_station_sensor_types()
+for s in sensors:
+    timestamps = stn.get_sensor_by_type(s).unaltered_data_timestamps()
+```
 
 ## Check Your Data
 

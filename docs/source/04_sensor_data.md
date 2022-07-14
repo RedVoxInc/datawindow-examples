@@ -120,6 +120,31 @@ functions depending on the type of the Sensor.
 Refer to the documentation on [Sensor Subclass](https://github.com/RedVoxInc/redvox-python-sdk/tree/master/docs/python_sdk/data_window/station#sensor-subclass-functions)
 for more information about these functions.
 
+All Sensors have timestamps, which are in [UTC](https://www.timeanddate.com/time/aboututc.html).
+
+This example shows how to access the timestamps of a Sensor:
+
+```python
+from redvox.common.data_window import DataWindow
+
+# Replace the following line with an appropriate method of loading data
+dw = DataWindow()
+
+# get the first station
+stn = dw.first_station()
+
+# get from a specific sensor
+audio = stn.audio_sensor()
+audio_timestamps = audio.data_timestamps()
+
+# get from all sensors
+sensors = stn.get_station_sensor_types()
+for s in sensors:
+    timestamps = stn.get_sensor_by_type(s).data_timestamps()
+```
+
+Refer to this [table](04a_sensor_units.md#units-of-the-data) for more information on the units of the data.
+
 This example shows how to access data from commonly used sensors:
 
 ```python
@@ -170,25 +195,10 @@ data_lon = loc.get_longitude_data()
 data_alt = loc.get_altitude_data()
 ```
 
-Here is an example of accessing data from any Sensor regardless of type:
-
-```python
-from redvox.common.sensor_data import SensorData
-
-# Replace the following line with an appropriate method of loading sensor data
-sen = SensorData("test_sensor")
-
-# get all the possible channels
-channels = sen.data_channels()
-
-# choose a channel from the above list
-target_channel = "value_from_channels"
-
-# get the data
-data = sen.get_data_channel(target_channel)
-```
-
-Refer to these [tables](04a_sensor_units.md) for information on the possible channels for each sensor, as well as the 
+Refer to these [tables](04a_sensor_units.md) for information on the possible channels for each sensor, as well as the
 units for each channel.
+
+If you encounter any issues while accessing a Sensor, refer to the page on
+[Troubleshooting](troubleshooting.md#unexpected-return-values-from-functions)
 
 You have finished the DataWindow examples.  Click here to view the [next steps](what_to_do_next.md).
