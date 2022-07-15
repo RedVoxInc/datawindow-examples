@@ -276,8 +276,9 @@ provided in <code class="docutils literal notranslate"><span class="pre">redvox.
 Update the parameters of the function or use a different function as needed.</p></li>
 <li><p>You may get a list of channel names when accessing data in a Sensor.  This means that the channel you are trying to
 access in the Sensor does not exist.  Use one of the listed channel names.</p></li>
-<li><p>Timestamps are often adjusted from the raw data values due to differences in device clock timing.  You may access the
-raw data values using the <code class="docutils literal notranslate"><span class="pre">unaltered_data_timestamps()</span></code> function.  See example below:</p></li>
+<li><p>Timestamps are often adjusted from the raw data values due to differences in device clock timing.  Refer to the
+<a class="reference internal" href="03a_time_synchronization.html#calculating-the-offset"><span class="std std-doc">time synchronization page</span></a> for details on how timestamps are
+updated.  You may access the raw data timestamps using the <code class="docutils literal notranslate"><span class="pre">unaltered_data_timestamps()</span></code> function.  See example below:</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">redvox.common.data_window</span> <span class="kn">import</span> <span class="n">DataWindow</span>
 
