@@ -60,8 +60,9 @@ my_datawindow.print_errors()
 * You may get a list of channel names when accessing data in a Sensor.  This means that the channel you are trying to 
   access in the Sensor does not exist.  Use one of the listed channel names.
 
-* Timestamps are often adjusted from the raw data values due to differences in device clock timing.  You may access the
-  raw data values using the `unaltered_data_timestamps()` function.  See example below:
+* Timestamps are often adjusted from the raw data values due to differences in device clock timing.  Refer to the 
+  [time synchronization page](03a_time_synchronization.md#calculating-the-offset) for details on how timestamps are 
+  updated.  You may access the raw data timestamps using the `unaltered_data_timestamps()` function.  See example below:
 
 ```python
 from redvox.common.data_window import DataWindow
