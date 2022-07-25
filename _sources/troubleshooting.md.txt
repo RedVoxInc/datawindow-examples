@@ -100,8 +100,15 @@ for s in sensors:
 
 * If you are loading a DataWindow from an existing file, [make sure you use the correct function](00b_save_load_data_window.md#loading-a-pre-constructed-datawindow).
 
-* If you are still unable to load the DataWindow, compare the DataWindow's sdk_version() with the version you
-  have installed.
+* If you get a `FileNotFoundError` while loading an existing file, check that the file you are loading exists, and you 
+  are putting the correct path into the function.
+
+* If you still cannot load the DataWindow from a file, and you have access to the raw data files, [re-create the DataWindow](00_create_data_window.md).
+
+* If you downloaded a DataWindow file from [redvox.io](https://redvox.io), use the website to re-run the report if able.
+
+* If you are having issues reading values from a DataWindow, it may have been created with a different version of the SDK.
+  The example below shows how you would check the SDK version that's installed and the one used to create a DataWindow.
 
 ```python
 import redvox
@@ -113,10 +120,6 @@ print("Installed Version: ", redvox.version())
 
 print("DataWindow Version: ", dw.sdk_version())
 ```
-
-* If the DataWindow's version is not equal to the SDK's version, [re-create the DataWindow](00_create_data_window.md).
-
-* If you downloaded a DataWindow file from [redvox.io](https://redvox.io), use the website to re-run the report if able.
 
 ## If All Else Fails
 

@@ -316,8 +316,12 @@ If you have other file extensions, those files may not work with DataWindow.</p>
 <h2>Loading Existing DataWindows<a class="headerlink" href="#loading-existing-datawindows" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>If you are loading a DataWindow from an existing file, <a class="reference internal" href="00b_save_load_data_window.html#loading-a-pre-constructed-datawindow"><span class="std std-doc">make sure you use the correct function</span></a>.</p></li>
-<li><p>If you are still unable to load the DataWindow, compare the DataWindow’s sdk_version() with the version you
-have installed.</p></li>
+<li><p>If you get a <code class="docutils literal notranslate"><span class="pre">FileNotFoundError</span></code> while loading an existing file, check that the file you are loading exists, and you
+are putting the correct path into the function.</p></li>
+<li><p>If you still cannot load the DataWindow from a file, and you have access to the raw data files, <a class="reference internal" href="00_create_data_window.html"><span class="doc std std-doc">re-create the DataWindow</span></a>.</p></li>
+<li><p>If you downloaded a DataWindow file from <a class="reference external" href="https://redvox.io">redvox.io</a>, use the website to re-run the report if able.</p></li>
+<li><p>If you are having issues reading values from a DataWindow, it may have been created with a different version of the SDK.
+The example below shows how you would check the SDK version that’s installed and the one used to create a DataWindow.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">redvox</span>
 <span class="kn">from</span> <span class="nn">redvox.common.data_window</span> <span class="kn">import</span> <span class="n">DataWindow</span>
@@ -329,10 +333,6 @@ have installed.</p></li>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"DataWindow Version: "</span><span class="p">,</span> <span class="n">dw</span><span class="o">.</span><span class="n">sdk_version</span><span class="p">())</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>If the DataWindow’s version is not equal to the SDK’s version, <a class="reference internal" href="00_create_data_window.html"><span class="doc std std-doc">re-create the DataWindow</span></a>.</p></li>
-<li><p>If you downloaded a DataWindow file from <a class="reference external" href="https://redvox.io">redvox.io</a>, use the website to re-run the report if able.</p></li>
-</ul>
 </div>
 <div class="section" id="if-all-else-fails">
 <h2>If All Else Fails<a class="headerlink" href="#if-all-else-fails" title="Permalink to this headline">#</a></h2>
