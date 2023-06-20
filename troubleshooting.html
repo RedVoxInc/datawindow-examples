@@ -221,7 +221,7 @@
 <div class="section" id="first-things-first">
 <h2>First Things First<a class="headerlink" href="#first-things-first" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="getting_data.html#python-setup"><span class="std std-doc">Check if the redvox SDK is installed</span></a>.</p></li>
+<li><p><a class="reference internal" href="getting_data.html#python-setup"><span class="std std-ref">Check if the redvox SDK is installed</span></a>.</p></li>
 </ul>
 </div>
 <div class="section" id="enable-error-reporting">
@@ -257,12 +257,12 @@
 <li><p>If you can’t access the DataWindowConfig class, include this line to import DataWindowConfig into your project:
 <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">redvox.common.data_window</span> <span class="pre">import</span> <span class="pre">DataWindowConfig</span></code></p></li>
 <li><p>Check the value of the <code class="docutils literal notranslate"><span class="pre">input_dir</span></code> parameter in the DataWindowConfig for any errors.</p></li>
-<li><p>Check that you are using the <a class="reference internal" href="00_create_data_window.html"><span class="doc std std-doc">appropriate value</span></a> for the <code class="docutils literal notranslate"><span class="pre">structured</span></code> parameter of DataWindowConfig.</p></li>
+<li><p>Check that you are using the <a class="reference internal" href="00_create_data_window.html"><span class="std std-doc">appropriate value</span></a> for the <code class="docutils literal notranslate"><span class="pre">structured</span></code> parameter of DataWindowConfig.</p></li>
 <li><p>Check all the parameters of DataWindow and DataWindowConfig for any errors.</p></li>
 <li><p>Check the value of any station IDs when using them in DataWindow parameters or retrieving the data.  IDs may look
 similar to each other.</p></li>
 <li><p>If the results are not what you expect, try adjusting the parameters of DataWindow.<br/>
-Refer to <a class="reference internal" href="00a_data_window_parameters.html#simplified-datawindow-with-parameters"><span class="std std-doc">DataWindow with Parameters</span></a>
+Refer to <a class="reference internal" href="00a_data_window_parameters.html#simplified-datawindow-with-parameters"><span class="std std-ref">DataWindow with Parameters</span></a>
 for an example on how to set the most commonly used parameters.
 Timestamps are in <a class="reference external" href="https://www.timeanddate.com/time/aboututc.html">UTC</a>.  You may use the
 <a class="reference external" href="https://redvoxinc.github.io/redvox-sdk/api_docs/redvox/common/date_time_utils.html">date time utilities</a>
@@ -277,7 +277,7 @@ Update the parameters of the function or use a different function as needed.</p>
 <li><p>You may get a list of channel names when accessing data in a Sensor.  This means that the channel you are trying to
 access in the Sensor does not exist.  Use one of the listed channel names.</p></li>
 <li><p>Timestamps are often adjusted from the raw data values due to differences in device clock timing.  Refer to the
-<a class="reference internal" href="03a_time_synchronization.html#calculating-the-offset"><span class="std std-doc">time synchronization page</span></a> for details on how timestamps are
+<a class="reference internal" href="03a_time_synchronization.html#calculating-the-offset"><span class="std std-ref">time synchronization page</span></a> for details on how timestamps are
 updated.  You may access the raw data timestamps using the <code class="docutils literal notranslate"><span class="pre">unaltered_data_timestamps()</span></code> function.  See example below:</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">redvox.common.data_window</span> <span class="kn">import</span> <span class="n">DataWindow</span>
@@ -303,8 +303,8 @@ updated.  You may access the raw data timestamps using the <code class="docutils
 <h2>Check Your Data<a class="headerlink" href="#check-your-data" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Check that the files within the input directory are in one of two formats
-(<a class="reference internal" href="00_create_data_window.html"><span class="doc std std-doc">structured or unstructured</span></a>) described in the
-<a class="reference internal" href="00_create_data_window.html"><span class="doc std std-doc">Creating a DataWindow</span></a> example.
+(<a class="reference internal" href="00_create_data_window.html"><span class="std std-doc">structured or unstructured</span></a>) described in the
+<a class="reference internal" href="00_create_data_window.html"><span class="std std-doc">Creating a DataWindow</span></a> example.
 Use the appropriate value for the <code class="docutils literal notranslate"><span class="pre">structured</span></code> parameter of DataWindowConfig.</p></li>
 <li><p>When working with structured directories, ensure that all API 1000 (API M) files are in a directory called <code class="docutils literal notranslate"><span class="pre">api1000</span></code>
 and all API 900 files are in a directory called <code class="docutils literal notranslate"><span class="pre">api900</span></code>.  API 1000 files end in <code class="docutils literal notranslate"><span class="pre">.rdvxm</span></code> and API 900 files end in <code class="docutils literal notranslate"><span class="pre">.rdvxz</span></code></p></li>
@@ -315,10 +315,10 @@ If you have other file extensions, those files may not work with DataWindow.</p>
 <div class="section" id="loading-existing-datawindows">
 <h2>Loading Existing DataWindows<a class="headerlink" href="#loading-existing-datawindows" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
-<li><p>If you are loading a DataWindow from an existing file, <a class="reference internal" href="00b_save_load_data_window.html#loading-a-pre-constructed-datawindow"><span class="std std-doc">make sure you use the correct function</span></a>.</p></li>
+<li><p>If you are loading a DataWindow from an existing file, <a class="reference internal" href="00b_save_load_data_window.html#loading-a-pre-constructed-datawindow"><span class="std std-ref">make sure you use the correct function</span></a>.</p></li>
 <li><p>If you get a <code class="docutils literal notranslate"><span class="pre">FileNotFoundError</span></code> while loading an existing file, check that the file you are loading exists, and you
 are putting the correct path into the function.</p></li>
-<li><p>If you still cannot load the DataWindow from a file, and you have access to the raw data files, <a class="reference internal" href="00_create_data_window.html"><span class="doc std std-doc">re-create the DataWindow</span></a>.</p></li>
+<li><p>If you still cannot load the DataWindow from a file, and you have access to the raw data files, <a class="reference internal" href="00_create_data_window.html"><span class="std std-doc">re-create the DataWindow</span></a>.</p></li>
 <li><p>If you downloaded a DataWindow file from <a class="reference external" href="https://redvox.io">redvox.io</a>, use the website to re-run the report if able.</p></li>
 <li><p>If you are having issues reading values from a DataWindow, it may have been created with a different version of the SDK.
 The example below shows how you would check the SDK version that’s installed and the one used to create a DataWindow.</p></li>

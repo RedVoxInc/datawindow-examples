@@ -69,7 +69,7 @@ The following terms are common terminology used throughout this documentation.
   for more information on the Station Python class. A station has sensors (see below).
 
 - **Sensor**: a device that responds to a physical stimulus, e.g., barometer, accelerometer. The units for each available sensor can
-  be found in `RedVox SDK Sensor Documentation <https://github.com/RedVoxInc/redvox-python-sdk/tree/master/docs/python_sdk/data_window/station#sensor-data-dataframe-access>`_.
+  be found in `RedVox SDK Sensor Documentation <https://github.com/RedVoxInc/redvox-python-sdk/tree/master/docs/python_sdk/data_window/station#sensor-data-access>`_.
   A station should always have audio sensor (and hence audio data).
 
 - **Epoch** or **epoch time**: unix time (also referred to as the epoch time), the number of seconds since 1 January 1970.
